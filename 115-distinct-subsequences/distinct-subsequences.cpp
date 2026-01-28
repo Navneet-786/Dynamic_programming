@@ -2,18 +2,6 @@ class Solution {
 public:
 using ll = long long;
 vector<vector<ll>>dp;
-// int solve(string &s,string &t, int n1, int n2){
-//     if(n2==0)return 1;
-//     if(n1==0)return 0;
-//     if(dp[n1][n2]!=-1)return dp[n1][n2];
-//     if(s[n1-1]==t[n2-1]){
-//         return  dp[n1][n2] = solve(s, t, n1-1, n2-1) + solve(s, t, n1-1, n2);
-//     }
-//     else{
-//         return  dp[n1][n2] = solve(s, t, n1-1, n2);
-//     }
-// }
-
 int numDistinct(string s, string t) {
     int n1 = s.size();
     int n2 = t.size();
@@ -32,9 +20,9 @@ int numDistinct(string s, string t) {
             else{
                 dp[i][j] = dp[i][j-1];
             }
-             if (dp[i][j] > INT_MAX) {
-                    dp[i][j] = INT_MAX;
-                }
+            if (dp[i][j] > INT_MAX) {
+                dp[i][j] = INT_MAX;
+            }
         }
     }
     return (int)dp[n2][n1];
